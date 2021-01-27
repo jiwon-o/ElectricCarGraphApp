@@ -99,7 +99,7 @@ public class RangeActivity3 extends Fragment {
             chart.setDrawGridBackground(false);
 
             // create marker to display box when values are selected
-            MyMarkerView mv = new MyMarkerView(getActivity(), R.layout.custom_marker_view);
+            RangeMarkerView mv = new RangeMarkerView(getActivity(), R.layout.custom_marker_view);
 
             // Set the marker to the chart
             mv.setChartView(chart);

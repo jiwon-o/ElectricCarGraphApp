@@ -10,11 +10,11 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.utils.MPPointF;
 import com.github.mikephil.charting.utils.Utils;
 
-public class MyMarkerView extends MarkerView {
+public class TempMarkerView extends MarkerView {
 
     private TextView tvContent;
 
-    public MyMarkerView(Context context, int layoutResource) {
+    public TempMarkerView(Context context, int layoutResource) {
         super(context, layoutResource);
 
         tvContent = (TextView)findViewById(R.id.tvContent);
@@ -29,10 +29,10 @@ public class MyMarkerView extends MarkerView {
 
             CandleEntry ce = (CandleEntry) e;
 
-            tvContent.setText("" + Utils.formatNumber(ce.getHigh(), 0, true) + "km");
+            tvContent.setText("" + Utils.formatNumber(ce.getHigh(), 0, true) + "°C");
         } else {
 
-            tvContent.setText("" + Utils.formatNumber(e.getY(), 0, true) + "km");
+            tvContent.setText("" + Utils.formatNumber(e.getY(), 0, true) + "°C");
         }
 
         super.refreshContent(e, highlight);

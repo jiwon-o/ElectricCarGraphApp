@@ -128,7 +128,7 @@ public class TemperatureActivity1 extends Fragment {
         chart.getLegend().setEnabled(false);
 
 
-        MyMarkerView mv = new MyMarkerView(getActivity(), R.layout.custom_marker_view);
+        TempMarkerView mv = new TempMarkerView(getActivity(), R.layout.custom_marker_view);
         mv.setChartView(chart); // For bounds control
         chart.setMarker(mv); // Set the marker to the chart
 
