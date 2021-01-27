@@ -1,15 +1,23 @@
 package com.appforest.electriccardata;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -20,7 +28,9 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -76,6 +86,19 @@ public class TemperatureActivity1 extends Fragment {
                              Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_temperature_activity1, container, false);
 
+        TextView tv = view.findViewById(R.id.editNewKidBirth);
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat month_date = new SimpleDateFormat("MMM");
+        tv.setText((cal.get(Calendar.DATE)-3) +"-"+ (cal.get(Calendar.DATE)+3) +" "+ (month_date.format(cal.getTime())));
+
+        LinearLayout btnLogin = (LinearLayout) view.findViewById(R.id.btn_date_picker);
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDate();
+            }
+        });
+
         chart = view.findViewById(R.id.chart1);
 
         chart.setDrawBarShadow(false);
@@ -113,9 +136,9 @@ public class TemperatureActivity1 extends Fragment {
         yAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
         yAxis.setTextSize(12);
         yAxis.setTextColor(Color.GRAY);
-        yAxis.setAxisMaximum(100f);
+        yAxis.setAxisMaximum(50f);
         yAxis.setAxisMinimum(0f);
-        yAxis.setGranularity(50f);
+        yAxis.setGranularity(25f);
         yAxis.setDrawGridLines(true);
         yAxis.setDrawAxisLine(false);
         yAxis.setDrawLabels(true);
@@ -133,10 +156,28 @@ public class TemperatureActivity1 extends Fragment {
         chart.setMarker(mv); // Set the marker to the chart
 
         // setting data
-        setData(7, 100);
+        setData(7, 50);
 
         return view;
     }
+
+    Calendar cal = Calendar.getInstance();
+    SimpleDateFormat month_date = new SimpleDateFormat("MMM");
+
+    void showDate() {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                TextView tv = view.findViewById(R.id.editNewKidBirth);
+                tv.setText(cal.get(Calendar.DATE) +" "+ month_date.format(cal.getTime()));
+            }
+        },cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
+
+        datePickerDialog.show();
+
+
+    }
+
 
     private void setData(int count, float range) {
 
@@ -178,4 +219,5 @@ public class TemperatureActivity1 extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
     }
+
 }
