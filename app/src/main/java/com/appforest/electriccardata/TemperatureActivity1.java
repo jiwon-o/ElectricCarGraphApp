@@ -144,10 +144,10 @@ public class TemperatureActivity1 extends Fragment {
 
         ArrayList<BarEntry> values = new ArrayList<>();
 
-//        for (int i = (int) start; i < start + count; i++) {
-//            float val = (float) (Math.random() * (range + 1));
-//            values.add(new BarEntry(i, val, getResources()));
-//        }
+        for (int i = (int) start; i < start + count; i++) {
+            float val = (float) (Math.random() * (range + 1));
+            values.add(new BarEntry(i, val, getResources()));
+        }
 
         BarDataSet set1;
 
