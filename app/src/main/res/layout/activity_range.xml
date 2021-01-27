@@ -69,8 +69,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <!--        <include layout="@layout/activity_linechart" />-->
-
         </androidx.viewpager.widget.ViewPager>
 
     </LinearLayout>

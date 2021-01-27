@@ -12,19 +12,23 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/btn_range_datePicker_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="5dp"
+            android:padding="10dp"
+            android:clickable="true"
             android:orientation="horizontal">
 
 
             <TextView
+                android:id="@+id/editBirth_range_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_medium"
                 android:lineSpacingExtra="4sp"
-                android:text="April"
+                android:text=""
                 android:textColor="#000000"
                 android:textSize="18sp"
                 android:textStyle="normal" />
@@ -34,6 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:src="@drawable/ic_triangle_down"/>
+
 
 
         </LinearLayout>

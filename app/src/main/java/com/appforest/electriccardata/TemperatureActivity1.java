@@ -86,12 +86,12 @@ public class TemperatureActivity1 extends Fragment {
                              Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_temperature_activity1, container, false);
 
-        TextView tv = view.findViewById(R.id.editNewKidBirth);
+        //get today
+        TextView tv = view.findViewById(R.id.editBirth_temp_1);
         Calendar cal = Calendar.getInstance();
-        SimpleDateFormat month_date = new SimpleDateFormat("MMM");
-        tv.setText((cal.get(Calendar.DATE)-3) +"-"+ (cal.get(Calendar.DATE)+3) +" "+ (month_date.format(cal.getTime())));
+        tv.setText((cal.get(Calendar.MONTH)+1) +"-"+ cal.get(Calendar.DATE) +", "+ cal.get(Calendar.YEAR));
 
-        LinearLayout btnLogin = (LinearLayout) view.findViewById(R.id.btn_date_picker);
+        LinearLayout btnLogin = (LinearLayout) view.findViewById(R.id.btn_temp_datePicker_1);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -162,20 +162,18 @@ public class TemperatureActivity1 extends Fragment {
     }
 
     Calendar cal = Calendar.getInstance();
-    SimpleDateFormat month_date = new SimpleDateFormat("MMM");
 
     void showDate() {
         DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                TextView tv = view.findViewById(R.id.editNewKidBirth);
-                tv.setText(cal.get(Calendar.DATE) +" "+ month_date.format(cal.getTime()));
+                TextView tv = getActivity().findViewById(R.id.editBirth_temp_1);
+                tv.setText(String.format("%d-%d, %d", month+1, dayOfMonth, year));
             }
         },cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
 
         datePickerDialog.show();
-
-
     }
 
 

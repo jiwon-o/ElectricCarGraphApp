@@ -12,17 +12,17 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/btn_date_picker"
+            android:id="@+id/btn_temp_datePicker_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
             android:layout_marginBottom="5dp"
+            android:padding="10dp"
             android:clickable="true"
             android:orientation="horizontal">
 
 
             <TextView
-                android:id="@+id/editNewKidBirth"
+                android:id="@+id/editBirth_temp_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_medium"

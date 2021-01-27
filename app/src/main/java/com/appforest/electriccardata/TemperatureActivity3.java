@@ -1,5 +1,6 @@
 package com.appforest.electriccardata;
 
+import android.app.DatePickerDialog;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -10,6 +11,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -21,6 +25,7 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -76,6 +81,19 @@ public class TemperatureActivity3 extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_temperature_activity3, container, false);
+
+        //get today
+        TextView tv = view.findViewById(R.id.editBirth_temp_3);
+        Calendar cal = Calendar.getInstance();
+        tv.setText((cal.get(Calendar.MONTH)+1) +"-"+ cal.get(Calendar.DATE) +", "+ cal.get(Calendar.YEAR));
+
+        LinearLayout btnLogin = (LinearLayout) view.findViewById(R.id.btn_temp_datePicker_3);
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDate();
+            }
+        });
 
         chart = view.findViewById(R.id.chart1);
 
@@ -134,6 +152,21 @@ public class TemperatureActivity3 extends Fragment {
         setData(12, 100);
 
         return view;
+    }
+
+    Calendar cal = Calendar.getInstance();
+
+    void showDate() {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                TextView tv = getActivity().findViewById(R.id.editBirth_temp_3);
+                tv.setText(String.format("%d-%d, %d", month+1, dayOfMonth, year));
+            }
+        },cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
+
+        datePickerDialog.show();
     }
 
     private void setData(int count, float range) {
