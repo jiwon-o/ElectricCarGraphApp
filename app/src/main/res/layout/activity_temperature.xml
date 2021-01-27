@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="80dp"
             android:orientation="vertical">
 
             <TextView
@@ -55,11 +55,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:layout_marginHorizontal="40dp"
-            android:background="@color/white"
-            android:minHeight="?attr/actionBarSize" />
+            android:minHeight="?attr/actionBarSize"
+            android:background="@color/white"/>
+<!--            app:tabTextAppearance="@style/tab_text"/>-->
     </LinearLayout>
-
-
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -72,9 +71,9 @@
             android:id="@+id/pager1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            >
+            />
 
-        </androidx.viewpager.widget.ViewPager>
+
 
     </LinearLayout>
 

@@ -17,6 +17,18 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
 
+        <item name="fontFamily">@font/montserrat_medium</item>
+        <item name="android:textSize">30dp</item>
         <item name="colorAccent">@android:color/black</item>
+
+    </style>
+
+    <!-- TabLayout style-->
+    <style name="tab_text" parent="@android:style/TextAppearance.Widget.TabWidget">
+        <item name="fontFamily">@font/montserrat_medium</item>
+        <item name="android:textSize">30dp</item>
+        <item name="colorAccent">@android:color/black</item>
+
+
     </style>
 </resources>
