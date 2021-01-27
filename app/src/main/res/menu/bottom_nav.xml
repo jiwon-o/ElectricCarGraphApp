@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/tempItem"
+        android:icon="@drawable/ic_menu_temp_unclick"
+        android:title="Temp" />
+    <item
+        android:id="@+id/rangeItem"
+        android:icon="@drawable/ic_menu_range_unclick"
+        android:title="Range" />
+    <item
+        android:id="@+id/batteryItem"
+        android:icon="@drawable/ic_menu_battery_unclick"
+        android:title="Battery" />
+</menu>
