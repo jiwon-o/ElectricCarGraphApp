@@ -24,7 +24,6 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IFillFormatter;
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.dataprovider.LineDataProvider;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.Utils;
@@ -34,10 +33,10 @@ import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link RangeActivity2#newInstance} factory method to
+ * Use the {@link RangeFragment2#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RangeActivity2 extends Fragment {
+public class RangeFragment2 extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -50,7 +49,7 @@ public class RangeActivity2 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public RangeActivity2() {
+    public RangeFragment2() {
         // Required empty public constructor
     }
 
@@ -63,8 +62,8 @@ public class RangeActivity2 extends Fragment {
      * @return A new instance of fragment RangeActivity2.
      */
     // TODO: Rename and change types and number of parameters
-    public static RangeActivity2 newInstance(String param1, String param2) {
-        RangeActivity2 fragment = new RangeActivity2();
+    public static RangeFragment2 newInstance(String param1, String param2) {
+        RangeFragment2 fragment = new RangeFragment2();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -85,7 +84,7 @@ public class RangeActivity2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_range_activity2, container, false);
+        View view = inflater.inflate(R.layout.fragment_range2, container, false);
 
         //get today
         TextView tv = view.findViewById(R.id.editBirth_range_2);
@@ -96,7 +95,7 @@ public class RangeActivity2 extends Fragment {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyYearMonthPickerDialog pd = new MyYearMonthPickerDialog();
+                PickerDialog_YearMonth pd = new PickerDialog_YearMonth();
                 pd.setListener(d);
                 pd.show(getFragmentManager(), "YearMonthPickerTest");
             }

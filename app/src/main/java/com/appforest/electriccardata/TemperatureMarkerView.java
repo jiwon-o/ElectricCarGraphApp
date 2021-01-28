@@ -10,11 +10,11 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.utils.MPPointF;
 import com.github.mikephil.charting.utils.Utils;
 
-public class TempMarkerView extends MarkerView {
+public class TemperatureMarkerView extends MarkerView {
 
     private TextView tvContent;
 
-    public TempMarkerView(Context context, int layoutResource) {
+    public TemperatureMarkerView(Context context, int layoutResource) {
         super(context, layoutResource);
 
         tvContent = (TextView) findViewById(R.id.tv_content);

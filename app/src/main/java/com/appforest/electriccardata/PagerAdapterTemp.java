@@ -19,11 +19,11 @@ public class PagerAdapterTemp extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new TemperatureActivity1();
+                return new TemperatureFragment1();
             case 1:
-                return new TemperatureActivity2();
+                return new TemperatureFragment2();
             case 2:
-                return new TemperatureActivity3();
+                return new TemperatureFragment3();
             default:
                 return null;
         }

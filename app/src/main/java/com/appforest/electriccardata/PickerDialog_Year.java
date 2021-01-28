@@ -13,10 +13,10 @@ import androidx.fragment.app.DialogFragment;
 
 import java.util.Calendar;
 
-public class MyMonthWeekPickerDialog extends DialogFragment {
+public class PickerDialog_Year extends DialogFragment {
 
-    private static final int MAX_WEEK = 5;
-    private static final int MIN_WEEK = 1;
+    private static final int MAX_YEAR = 2099;
+    private static final int MIN_YEAR = 1980;
 
     private DatePickerDialog.OnDateSetListener listener;
     public Calendar cal = Calendar.getInstance();
@@ -33,37 +33,32 @@ public class MyMonthWeekPickerDialog extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
 
-        View dialog = inflater.inflate(R.layout.month_week_picker, null);
+        View dialog = inflater.inflate(R.layout.picker_year, null);
 
         btnConfirm = dialog.findViewById(R.id.btn_confirm);
         btnCancel = dialog.findViewById(R.id.btn_cancel);
 
-        final NumberPicker monthPicker = (NumberPicker) dialog.findViewById(R.id.weeklyPicker_month);
-        final NumberPicker weekPicker = (NumberPicker) dialog.findViewById(R.id.weeklyPicker_week);
+        final NumberPicker yearPicker = (NumberPicker) dialog.findViewById(R.id.yearlyPicker_year);
 
-        btnCancel.setOnClickListener(new View.OnClickListener(){
+        btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MyMonthWeekPickerDialog.this.getDialog().cancel();
+                PickerDialog_Year.this.getDialog().cancel();
             }
         });
 
-        btnConfirm.setOnClickListener(new View.OnClickListener(){
+        btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listener.onDateSet(null, 0, monthPicker.getValue(), weekPicker.getValue());
-                MyMonthWeekPickerDialog.this.getDialog().cancel();
+                listener.onDateSet(null, yearPicker.getValue(), 0, 0);
+                PickerDialog_Year.this.getDialog().cancel();
             }
         });
 
-        monthPicker.setMinValue(1);
-        monthPicker.setMaxValue(12);
-        monthPicker.setValue(cal.get(Calendar.MONTH) + 1);
-
-        int week = cal.get(Calendar.WEEK_OF_MONTH);
-        weekPicker.setMinValue(MIN_WEEK);
-        weekPicker.setMaxValue(MAX_WEEK);
-        weekPicker.setValue(week);
+        int year = cal.get(Calendar.YEAR);
+        yearPicker.setMinValue(MIN_YEAR);
+        yearPicker.setMaxValue(MAX_YEAR);
+        yearPicker.setValue(year);
 
         builder.setView(dialog);
 

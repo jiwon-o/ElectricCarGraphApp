@@ -13,7 +13,7 @@ import androidx.fragment.app.DialogFragment;
 
 import java.util.Calendar;
 
-public class MyYearMonthPickerDialog extends DialogFragment {
+public class PickerDialog_YearMonth extends DialogFragment {
 
     private static final int MAX_YEAR = 2099;
     private static final int MIN_YEAR = 1980;
@@ -33,7 +33,7 @@ public class MyYearMonthPickerDialog extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
 
-        View dialog = inflater.inflate(R.layout.month_year_picker, null);
+        View dialog = inflater.inflate(R.layout.picker_month_year, null);
 
         btnConfirm = dialog.findViewById(R.id.btn_confirm);
         btnCancel = dialog.findViewById(R.id.btn_cancel);
@@ -44,7 +44,7 @@ public class MyYearMonthPickerDialog extends DialogFragment {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MyYearMonthPickerDialog.this.getDialog().cancel();
+                PickerDialog_YearMonth.this.getDialog().cancel();
             }
         });
 
@@ -52,7 +52,7 @@ public class MyYearMonthPickerDialog extends DialogFragment {
             @Override
             public void onClick(View view) {
                 listener.onDateSet(null, yearPicker.getValue(), monthPicker.getValue(), 0);
-                MyYearMonthPickerDialog.this.getDialog().cancel();
+                PickerDialog_YearMonth.this.getDialog().cancel();
             }
         });
 

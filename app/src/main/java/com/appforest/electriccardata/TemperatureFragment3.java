@@ -8,11 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -26,16 +24,15 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link TemperatureActivity2#newInstance} factory method to
+ * Use the {@link TemperatureFragment3#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TemperatureActivity2 extends Fragment {
+public class TemperatureFragment3 extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -48,7 +45,7 @@ public class TemperatureActivity2 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public TemperatureActivity2() {
+    public TemperatureFragment3() {
         // Required empty public constructor
     }
 
@@ -58,11 +55,11 @@ public class TemperatureActivity2 extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment TemperatureActivity2.
+     * @return A new instance of fragment TemperatureActivity3.
      */
     // TODO: Rename and change types and number of parameters
-    public static TemperatureActivity2 newInstance(String param1, String param2) {
-        TemperatureActivity2 fragment = new TemperatureActivity2();
+    public static TemperatureFragment3 newInstance(String param1, String param2) {
+        TemperatureFragment3 fragment = new TemperatureFragment3();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -83,20 +80,20 @@ public class TemperatureActivity2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_temperature_activity2, container, false);
+        View view = inflater.inflate(R.layout.fragment_temperature3, container, false);
 
         //get today
-        TextView tv = view.findViewById(R.id.editBirth_temp_2);
+        TextView tv = view.findViewById(R.id.editBirth_temp_3);
         Calendar cal = Calendar.getInstance();
-        tv.setText((cal.get(Calendar.MONTH) + 1) + ", " + cal.get(Calendar.YEAR));
+        tv.setText("" + cal.get(Calendar.YEAR));
 
-        LinearLayout btnLogin = (LinearLayout) view.findViewById(R.id.btn_tempDatePicker_2);
+        LinearLayout btnLogin = (LinearLayout) view.findViewById(R.id.btn_tempDatePicker_3);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyYearMonthPickerDialog pd = new MyYearMonthPickerDialog();
+                PickerDialog_Year pd = new PickerDialog_Year();
                 pd.setListener(d);
-                pd.show(getFragmentManager(), "YearMonthPickerTest");
+                pd.show(getFragmentManager(), "YearPickerTest");
             }
         });
 
@@ -123,16 +120,16 @@ public class TemperatureActivity2 extends Fragment {
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawGridLines(false);
         xAxis.setGranularity(1f); // only intervals of 1 day
-        xAxis.setLabelCount(4);
+        xAxis.setLabelCount(12);
         xAxis.setTextColor(Color.GRAY);
-        String[] xAxisLables = new String[]{"", "1 week", "2 week", "3 week", "4 week"};
+        String[] xAxisLables = new String[]{"", "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"};
 
         chart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(xAxisLables));
 
         YAxis yAxis = chart.getAxisLeft();
         yAxis.setLabelCount(3, true);
         yAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
-        yAxis.setTextSize(14);
+        yAxis.setTextSize(10);
         yAxis.setTextColor(Color.GRAY);
         yAxis.setAxisMaximum(122f);
         yAxis.setAxisMinimum(14f);
@@ -149,25 +146,23 @@ public class TemperatureActivity2 extends Fragment {
         chart.getLegend().setEnabled(false);
 
 
-        TempMarkerView mv = new TempMarkerView(getActivity(), R.layout.custom_marker_view);
+        TemperatureMarkerView mv = new TemperatureMarkerView(getActivity(), R.layout.custom_marker_view);
         mv.setChartView(chart); // For bounds control
         chart.setMarker(mv); // Set the marker to the chart
 
         // setting data
-        setData(4, 100);
+        setData(12, 100);
 
         return view;
     }
 
-
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
         @Override
-        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-            TextView tv = getActivity().findViewById(R.id.editBirth_temp_2);
-            tv.setText(String.format("%d, %d", monthOfYear, year));
+        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+            TextView tv = getActivity().findViewById(R.id.editBirth_temp_3);
+            tv.setText(String.format("%d", year));
         }
     };
-
 
     private void setData(int count, float range) {
 

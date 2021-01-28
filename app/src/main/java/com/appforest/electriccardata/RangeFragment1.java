@@ -34,10 +34,10 @@ import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link RangeActivity3#newInstance} factory method to
+ * Use the {@link RangeFragment1#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RangeActivity3 extends Fragment {
+public class RangeFragment1 extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -50,7 +50,7 @@ public class RangeActivity3 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public RangeActivity3() {
+    public RangeFragment1() {
         // Required empty public constructor
     }
 
@@ -60,11 +60,11 @@ public class RangeActivity3 extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment RangeActivity3.
+     * @return A new instance of fragment RangeActivity1.
      */
     // TODO: Rename and change types and number of parameters
-    public static RangeActivity3 newInstance(String param1, String param2) {
-        RangeActivity3 fragment = new RangeActivity3();
+    public static RangeFragment1 newInstance(String param1, String param2) {
+        RangeFragment1 fragment = new RangeFragment1();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -85,20 +85,20 @@ public class RangeActivity3 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_range_activity3, container, false);
+        View view = inflater.inflate(R.layout.fragment_range1, container, false);
 
         //get today
-        TextView tv = view.findViewById(R.id.editBirth_range_3);
+        TextView tv = view.findViewById(R.id.editBirth_range_1);
         Calendar cal = Calendar.getInstance();
-        tv.setText("" + cal.get(Calendar.YEAR));
+        tv.setText("Week " + cal.get(Calendar.WEEK_OF_MONTH) + ", " + (cal.get(Calendar.MONTH) + 1));
 
-        LinearLayout btnLogin = (LinearLayout) view.findViewById(R.id.btn_rangeDatePicker_3);
+        LinearLayout btnLogin = (LinearLayout) view.findViewById(R.id.btn_rangeDatePicker_1);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyYearPickerDialog pd = new MyYearPickerDialog();
+                PickerDialog_WeekMonth pd = new PickerDialog_WeekMonth();
                 pd.setListener(d);
-                pd.show(getFragmentManager(), "YearPickerTest");
+                pd.show(getFragmentManager(), "MonthWeekPickerTest");
             }
         });
 
@@ -134,25 +134,20 @@ public class RangeActivity3 extends Fragment {
         }
 
         final ArrayList<String> xLabel = new ArrayList<>();
-        xLabel.add("JAN");
-        xLabel.add("FEB");
-        xLabel.add("MAR");
-        xLabel.add("APR");
-        xLabel.add("MAY");
-        xLabel.add("JUN");
-        xLabel.add("JUL");
-        xLabel.add("AUG");
-        xLabel.add("SEP");
-        xLabel.add("OCT");
-        xLabel.add("NOV");
-        xLabel.add("DEC");
+        xLabel.add("MON");
+        xLabel.add("TUE");
+        xLabel.add("WED");
+        xLabel.add("THR");
+        xLabel.add("FRI");
+        xLabel.add("SAT");
+        xLabel.add("SUN");
 
         XAxis xAxis;
         {   // // X-Axis Style // //
             xAxis = chart.getXAxis();
-            xAxis.setLabelCount(12, true);
+            xAxis.setLabelCount(7, true);
             xAxis.setTextColor(Color.GRAY);
-            xAxis.setTextSize(10);
+            xAxis.setTextSize(11);
             xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
             xAxis.setDrawGridLines(false);
             xAxis.setAxisLineColor(Color.WHITE);
@@ -172,16 +167,16 @@ public class RangeActivity3 extends Fragment {
             yAxis.setLabelCount(3, true);
             yAxis.setTextColor(Color.GRAY);
             yAxis.setTextSize(12);
-            yAxis.setAxisMaximum(4000f);
+            yAxis.setAxisMaximum(80f);
             yAxis.setAxisMinimum(0f);
-            yAxis.setGranularity(2000f);
+            yAxis.setGranularity(40f);
             yAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
             yAxis.setDrawGridLines(true);
             yAxis.setAxisLineColor(Color.WHITE);
             chart.getAxisRight().setEnabled(false);
         }
 
-        setData(12, 4000);
+        setData(7, 80);
         chart.getLegend().setEnabled(false);
 
         chart.animateXY(1000, 1000);
@@ -193,9 +188,9 @@ public class RangeActivity3 extends Fragment {
 
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
         @Override
-        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-            TextView tv = getActivity().findViewById(R.id.editBirth_range_3);
-            tv.setText(String.format("%d", year));
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int weekOfMonth) {
+            TextView tv = getActivity().findViewById(R.id.editBirth_range_1);
+            tv.setText(String.format("Week %d, %d ", weekOfMonth, monthOfYear));
         }
     };
 
