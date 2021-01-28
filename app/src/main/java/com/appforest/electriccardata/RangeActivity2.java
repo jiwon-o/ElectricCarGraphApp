@@ -90,7 +90,7 @@ public class RangeActivity2 extends Fragment {
         //get today
         TextView tv = view.findViewById(R.id.editBirth_range_2);
         Calendar cal = Calendar.getInstance();
-        tv.setText((cal.get(Calendar.MONTH)+1) +"-"+ cal.get(Calendar.DATE) +", "+ cal.get(Calendar.YEAR));
+        tv.setText((cal.get(Calendar.MONTH)+1) +" - "+ cal.get(Calendar.DATE) +", "+ cal.get(Calendar.YEAR));
 
         LinearLayout btnLogin = (LinearLayout) view.findViewById(R.id.btn_range_datePicker_2);
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -131,31 +131,18 @@ public class RangeActivity2 extends Fragment {
             chart.setPinchZoom(true);
         }
 
-        final ArrayList<String> xLabel = new ArrayList<>();
-        xLabel.add("MON");
-        xLabel.add("TUE");
-        xLabel.add("WED");
-        xLabel.add("THR");
-        xLabel.add("FRI");
-        xLabel.add("SAT");
-        xLabel.add("SUN");
 
         XAxis xAxis;
         {   // // X-Axis Style // //
             xAxis = chart.getXAxis();
-            xAxis.setLabelCount(7, true);
+            xAxis.setLabelCount(31, false);
             xAxis.setTextColor(Color.GRAY);
-            xAxis.setTextSize(11);
+            xAxis.setTextSize(8f);
             xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
             xAxis.setDrawGridLines(false);
             xAxis.setAxisLineColor(Color.WHITE);
+            xAxis.setAxisMinimum(1f);
             chart.getAxisRight().setEnabled(false);
-            xAxis.setValueFormatter(new IndexAxisValueFormatter() {
-                @Override
-                public String getFormattedValue(float value) {
-                    return xLabel.get((int) value);
-                }
-            });
 
         }
 
@@ -174,7 +161,7 @@ public class RangeActivity2 extends Fragment {
             chart.getAxisRight().setEnabled(false);
         }
 
-        setData(7, 100);
+        setData(31, 100);
         chart.getLegend().setEnabled(false);
 
         chart.animateXY(1000, 1000);
@@ -192,7 +179,7 @@ public class RangeActivity2 extends Fragment {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 TextView tv = getActivity().findViewById(R.id.editBirth_range_2);
-                tv.setText(String.format("%d-%d, %d", month+1, dayOfMonth, year));
+                tv.setText(String.format("%d - %d, %d", month+1, dayOfMonth, year));
             }
         },cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
 

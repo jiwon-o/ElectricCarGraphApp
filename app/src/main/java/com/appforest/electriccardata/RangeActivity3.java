@@ -90,7 +90,7 @@ public class RangeActivity3 extends Fragment {
         //get today
         TextView tv = view.findViewById(R.id.editBirth_range_3);
         Calendar cal = Calendar.getInstance();
-        tv.setText((cal.get(Calendar.MONTH)+1) +"-"+ cal.get(Calendar.DATE) +", "+ cal.get(Calendar.YEAR));
+        tv.setText((cal.get(Calendar.MONTH)+1) +" - "+ cal.get(Calendar.DATE) +", "+ cal.get(Calendar.YEAR));
 
         LinearLayout btnLogin = (LinearLayout) view.findViewById(R.id.btn_range_datePicker_3);
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -132,20 +132,25 @@ public class RangeActivity3 extends Fragment {
         }
 
         final ArrayList<String> xLabel = new ArrayList<>();
-        xLabel.add("MON");
-        xLabel.add("TUE");
-        xLabel.add("WED");
-        xLabel.add("THR");
-        xLabel.add("FRI");
-        xLabel.add("SAT");
-        xLabel.add("SUN");
+        xLabel.add("JAN");
+        xLabel.add("FEB");
+        xLabel.add("MAR");
+        xLabel.add("APR");
+        xLabel.add("MAY");
+        xLabel.add("JUN");
+        xLabel.add("JUL");
+        xLabel.add("AUG");
+        xLabel.add("SEP");
+        xLabel.add("OCT");
+        xLabel.add("NOV");
+        xLabel.add("DEC");
 
         XAxis xAxis;
         {   // // X-Axis Style // //
             xAxis = chart.getXAxis();
-            xAxis.setLabelCount(7, true);
+            xAxis.setLabelCount(12, true);
             xAxis.setTextColor(Color.GRAY);
-            xAxis.setTextSize(11);
+            xAxis.setTextSize(10);
             xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
             xAxis.setDrawGridLines(false);
             xAxis.setAxisLineColor(Color.WHITE);
@@ -174,7 +179,7 @@ public class RangeActivity3 extends Fragment {
             chart.getAxisRight().setEnabled(false);
         }
 
-        setData(7, 100);
+        setData(12, 100);
         chart.getLegend().setEnabled(false);
 
         chart.animateXY(1000, 1000);
@@ -192,7 +197,7 @@ public class RangeActivity3 extends Fragment {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 TextView tv = getActivity().findViewById(R.id.editBirth_range_3);
-                tv.setText(String.format("%d-%d, %d", month+1, dayOfMonth, year));
+                tv.setText(String.format("%d - %d, %d", month+1, dayOfMonth, year));
             }
         },cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
 

@@ -90,7 +90,7 @@ public class RangeActivity1 extends Fragment {
         //get today
         TextView tv = view.findViewById(R.id.editBirth_range_1);
         Calendar cal = Calendar.getInstance();
-        tv.setText((cal.get(Calendar.MONTH)+1) +"-"+ cal.get(Calendar.DATE) +", "+ cal.get(Calendar.YEAR));
+        tv.setText((cal.get(Calendar.MONTH)+1) +" - "+ cal.get(Calendar.DATE) +", "+ cal.get(Calendar.YEAR));
 
         LinearLayout btnLogin = (LinearLayout) view.findViewById(R.id.btn_range_datePicker_1);
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -192,7 +192,7 @@ public class RangeActivity1 extends Fragment {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 TextView tv = getActivity().findViewById(R.id.editBirth_range_1);
-                tv.setText(String.format("%d-%d, %d", month+1, dayOfMonth, year));
+                tv.setText(String.format("%d - %d, %d", month+1, dayOfMonth, year));
             }
         },cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
 

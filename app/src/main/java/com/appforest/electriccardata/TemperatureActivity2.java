@@ -86,7 +86,7 @@ public class TemperatureActivity2 extends Fragment {
         //get today
         TextView tv = view.findViewById(R.id.editBirth_temp_2);
         Calendar cal = Calendar.getInstance();
-        tv.setText((cal.get(Calendar.MONTH)+1) +"-"+ cal.get(Calendar.DATE) +", "+ cal.get(Calendar.YEAR));
+        tv.setText((cal.get(Calendar.MONTH)+1) +" - "+ cal.get(Calendar.DATE) +", "+ cal.get(Calendar.YEAR));
 
         LinearLayout btnLogin = (LinearLayout) view.findViewById(R.id.btn_temp_datePicker_2);
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -128,11 +128,11 @@ public class TemperatureActivity2 extends Fragment {
         YAxis yAxis = chart.getAxisLeft();
         yAxis.setLabelCount(3, true);
         yAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
-        yAxis.setTextSize(12);
+        yAxis.setTextSize(14);
         yAxis.setTextColor(Color.GRAY);
-        yAxis.setAxisMaximum(100f);
+        yAxis.setAxisMaximum(50f);
         yAxis.setAxisMinimum(0f);
-        yAxis.setGranularity(50f);
+        yAxis.setGranularity(25f);
         yAxis.setDrawGridLines(true);
         yAxis.setDrawAxisLine(false);
         yAxis.setDrawLabels(true);
@@ -150,7 +150,7 @@ public class TemperatureActivity2 extends Fragment {
         chart.setMarker(mv); // Set the marker to the chart
 
         // setting data
-        setData(4, 100);
+        setData(4, 50);
 
         return view;
     }
@@ -163,7 +163,7 @@ public class TemperatureActivity2 extends Fragment {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 TextView tv = getActivity().findViewById(R.id.editBirth_temp_2);
-                tv.setText(String.format("%d-%d, %d", month+1, dayOfMonth, year));
+                tv.setText(String.format("%d - %d, %d", month+1, dayOfMonth, year));
             }
         },cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
 
