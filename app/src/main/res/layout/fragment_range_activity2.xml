@@ -12,13 +12,13 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/btn_range_datePicker_2"
+            android:id="@+id/btn_rangeDatePicker_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:padding="10dp"
             android:clickable="true"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="10dp">
 
 
             <TextView
@@ -36,8 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/ic_triangle_down"/>
-
+                android:src="@drawable/ic_triangle_down" />
 
 
         </LinearLayout>
@@ -72,12 +71,11 @@
         </LinearLayout>
 
         <com.github.mikephil.charting.charts.LineChart
-            android:id="@+id/chart2"
+            android:id="@+id/chart_line"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
     </LinearLayout>
-
 
 
 </FrameLayout>

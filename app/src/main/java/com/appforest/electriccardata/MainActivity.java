@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Navigation Listener
         mBottomNV = findViewById(R.id.nav_view);
         mBottomNV.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() { //NavigationItemSelect
             @Override
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         mBottomNV.setSelectedItemId(R.id.tempItem);
     }
 
+    //Bottom navigation function
     private void BottomNavigate(int id) {
         String tag = String.valueOf(id);
         FragmentManager fragmentManager = getSupportFragmentManager();

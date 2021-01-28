@@ -87,14 +87,14 @@ public class TemperatureActivity1 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.fragment_temperature_activity1, container, false);
+        View view = inflater.inflate(R.layout.fragment_temperature_activity1, container, false);
 
         //get today
         TextView tv = view.findViewById(R.id.editBirth_temp_1);
         Calendar cal = Calendar.getInstance();
-        tv.setText("Week " + cal.get(Calendar.WEEK_OF_MONTH) +", "+ (cal.get(Calendar.MONTH)+1));
+        tv.setText("Week " + cal.get(Calendar.WEEK_OF_MONTH) + ", " + (cal.get(Calendar.MONTH) + 1));
 
-        LinearLayout btnLogin = (LinearLayout) view.findViewById(R.id.btn_temp_datePicker_1);
+        LinearLayout btnLogin = (LinearLayout) view.findViewById(R.id.btn_tempDatePicker_1);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,7 +104,7 @@ public class TemperatureActivity1 extends Fragment {
             }
         });
 
-        chart = view.findViewById(R.id.chart1);
+        chart = view.findViewById(R.id.chart_bar);
 
         chart.setDrawBarShadow(false);
         chart.setDrawValueAboveBar(true);
@@ -122,7 +122,6 @@ public class TemperatureActivity1 extends Fragment {
         // chart.setDrawYLabels(false);
 
         chart.animateXY(2000, 2000);
-
 
 
         XAxis xAxis = chart.getXAxis();
@@ -168,7 +167,7 @@ public class TemperatureActivity1 extends Fragment {
 
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
         @Override
-        public void onDateSet(DatePicker view, int year, int monthOfYear, int weekOfMonth){
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int weekOfMonth) {
             TextView tv = getActivity().findViewById(R.id.editBirth_temp_1);
             tv.setText(String.format("Week %d, %d ", weekOfMonth, monthOfYear));
         }

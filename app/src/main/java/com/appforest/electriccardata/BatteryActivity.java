@@ -22,6 +22,8 @@ import java.util.ArrayList;
 
 public class BatteryActivity extends Fragment {
 
+
+    //Battery fragment
     private PieChart chart;
 
     @Override
@@ -34,7 +36,7 @@ public class BatteryActivity extends Fragment {
 
         View view = inflater.inflate(R.layout.activity_battery, container, false);
 
-        chart = view.findViewById(R.id.chart1);
+        chart = view.findViewById(R.id.chart_pie);
         chart.setUsePercentValues(true);
         chart.getDescription().setEnabled(false);
         chart.setExtraOffsets(5, 10, 5, 5);
@@ -74,7 +76,7 @@ public class BatteryActivity extends Fragment {
         chart.setEntryLabelColor(Color.WHITE);
         chart.setEntryLabelTextSize(11f);
 
-        setData(4,25);
+        setData(4, 25);
 
         return view;
 
@@ -85,6 +87,7 @@ public class BatteryActivity extends Fragment {
 
         // NOTE: The order of the entries when being added to the entries array determines their position around the center of
         // the chart.
+
 //        for (int i = 0; i < count ; i++) {
 //            entries.add(new PieEntry((float) ((Math.random() * range) + range / 5)));
 //        }
@@ -94,21 +97,18 @@ public class BatteryActivity extends Fragment {
         entries.add(new PieEntry((float) ((Math.random() * range) + range / 5), "Battery Field"));
         entries.add(new PieEntry((float) ((Math.random() * range) + range / 5), "Battery Care"));
 
-
         PieDataSet dataSet = new PieDataSet(entries, "");
 
         dataSet.setDrawIcons(false);
-
         dataSet.setSliceSpace(3f);
         dataSet.setSelectionShift(5f);
 
         // add a lot of colors
-
         dataSet.setColors(Color.rgb(119, 171, 255),
                 Color.rgb(174, 231, 130),
                 Color.rgb(249, 220, 116),
                 Color.rgb(255, 180, 80));
-        //dataSet.setSelectionShift(0f);
+
 
         PieData data = new PieData(dataSet);
         data.setValueFormatter(new PercentFormatter());

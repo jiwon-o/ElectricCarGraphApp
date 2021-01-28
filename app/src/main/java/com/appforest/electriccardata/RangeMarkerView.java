@@ -17,7 +17,7 @@ public class RangeMarkerView extends MarkerView {
     public RangeMarkerView(Context context, int layoutResource) {
         super(context, layoutResource);
 
-        tvContent = (TextView)findViewById(R.id.tvContent);
+        tvContent = (TextView) findViewById(R.id.tv_content);
     }
 
     // callbacks everytime the MarkerView is redrawn, can be used to update the

@@ -27,7 +27,7 @@ public class RangeActivity extends Fragment {
 
         View view = inflater.inflate(R.layout.activity_range, container, false);
 
-        TabLayout tabLayout = view.findViewById(R.id.tab_layout2);
+        TabLayout tabLayout = view.findViewById(R.id.tab_layout_range);
 
         tabLayout.addTab(tabLayout.newTab().setText("WEEK"));
         tabLayout.addTab(tabLayout.newTab().setText("MONTH"));
@@ -35,7 +35,7 @@ public class RangeActivity extends Fragment {
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final ViewPager viewPager = view.findViewById(R.id.pager2);
+        final ViewPager viewPager = view.findViewById(R.id.pager_range);
         final PagerAdapterRange adapter = new PagerAdapterRange
                 (getFragmentManager(), tabLayout.getTabCount());
 
@@ -43,18 +43,18 @@ public class RangeActivity extends Fragment {
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab){
+            public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
             }
 
             @Override
-            public void onTabUnselected(TabLayout.Tab tab){
+            public void onTabUnselected(TabLayout.Tab tab) {
             }
 
             @Override
-            public void onTabReselected(TabLayout.Tab tab){
+            public void onTabReselected(TabLayout.Tab tab) {
             }
 
         });

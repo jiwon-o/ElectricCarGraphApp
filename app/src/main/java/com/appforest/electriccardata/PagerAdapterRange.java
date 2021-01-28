@@ -16,11 +16,15 @@ public class PagerAdapterRange extends FragmentStatePagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        switch (position){
-            case 0: return new RangeActivity1();
-            case 1: return new RangeActivity2();
-            case 2: return new RangeActivity3();
-            default: return null;
+        switch (position) {
+            case 0:
+                return new RangeActivity1();
+            case 1:
+                return new RangeActivity2();
+            case 2:
+                return new RangeActivity3();
+            default:
+                return null;
         }
     }
 

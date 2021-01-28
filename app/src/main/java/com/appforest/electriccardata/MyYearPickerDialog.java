@@ -38,17 +38,16 @@ public class MyYearPickerDialog extends DialogFragment {
         btnConfirm = dialog.findViewById(R.id.btn_confirm);
         btnCancel = dialog.findViewById(R.id.btn_cancel);
 
-        final NumberPicker monthPicker = (NumberPicker) dialog.findViewById(R.id.picker_month);
-        final NumberPicker yearPicker = (NumberPicker) dialog.findViewById(R.id.picker_year2);
+        final NumberPicker yearPicker = (NumberPicker) dialog.findViewById(R.id.yearlyPicker_year);
 
-        btnCancel.setOnClickListener(new View.OnClickListener(){
+        btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 MyYearPickerDialog.this.getDialog().cancel();
             }
         });
 
-        btnConfirm.setOnClickListener(new View.OnClickListener(){
+        btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 listener.onDateSet(null, yearPicker.getValue(), 0, 0);

@@ -90,9 +90,9 @@ public class RangeActivity3 extends Fragment {
         //get today
         TextView tv = view.findViewById(R.id.editBirth_range_3);
         Calendar cal = Calendar.getInstance();
-        tv.setText(""+ cal.get(Calendar.YEAR));
+        tv.setText("" + cal.get(Calendar.YEAR));
 
-        LinearLayout btnLogin = (LinearLayout) view.findViewById(R.id.btn_range_datePicker_3);
+        LinearLayout btnLogin = (LinearLayout) view.findViewById(R.id.btn_rangeDatePicker_3);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,7 +103,7 @@ public class RangeActivity3 extends Fragment {
         });
 
         {   // // Chart Style // //
-            chart = view.findViewById(R.id.chart2);
+            chart = view.findViewById(R.id.chart_line);
 
             // background color
             chart.setBackgroundColor(Color.WHITE);
@@ -193,7 +193,7 @@ public class RangeActivity3 extends Fragment {
 
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
         @Override
-        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth){
+        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
             TextView tv = getActivity().findViewById(R.id.editBirth_range_3);
             tv.setText(String.format("%d", year));
         }
@@ -205,7 +205,7 @@ public class RangeActivity3 extends Fragment {
 
         for (int i = 0; i < count; i++) {
 
-            float val = (float) (Math.random() * range) ;
+            float val = (float) (Math.random() * range);
             values.add(new Entry(i, val, getResources()));
         }
 
@@ -265,6 +265,7 @@ public class RangeActivity3 extends Fragment {
 
         }
     }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

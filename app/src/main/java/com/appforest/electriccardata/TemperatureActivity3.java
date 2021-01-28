@@ -82,14 +82,14 @@ public class TemperatureActivity3 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_temperature_activity3, container, false);
+        View view = inflater.inflate(R.layout.fragment_temperature_activity3, container, false);
 
         //get today
         TextView tv = view.findViewById(R.id.editBirth_temp_3);
         Calendar cal = Calendar.getInstance();
-        tv.setText(""+ cal.get(Calendar.YEAR));
+        tv.setText("" + cal.get(Calendar.YEAR));
 
-        LinearLayout btnLogin = (LinearLayout) view.findViewById(R.id.btn_temp_datePicker_3);
+        LinearLayout btnLogin = (LinearLayout) view.findViewById(R.id.btn_tempDatePicker_3);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,7 +99,7 @@ public class TemperatureActivity3 extends Fragment {
             }
         });
 
-        chart = view.findViewById(R.id.chart1);
+        chart = view.findViewById(R.id.chart_bar);
 
         chart.setDrawBarShadow(false);
         chart.setDrawValueAboveBar(true);
@@ -160,7 +160,7 @@ public class TemperatureActivity3 extends Fragment {
 
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
         @Override
-        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth){
+        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
             TextView tv = getActivity().findViewById(R.id.editBirth_temp_3);
             tv.setText(String.format("%d", year));
         }
