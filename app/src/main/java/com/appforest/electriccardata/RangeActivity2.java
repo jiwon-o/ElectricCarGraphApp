@@ -90,13 +90,15 @@ public class RangeActivity2 extends Fragment {
         //get today
         TextView tv = view.findViewById(R.id.editBirth_range_2);
         Calendar cal = Calendar.getInstance();
-        tv.setText((cal.get(Calendar.MONTH)+1) +" - "+ cal.get(Calendar.DATE) +", "+ cal.get(Calendar.YEAR));
+        tv.setText((cal.get(Calendar.MONTH)+1) +", "+ cal.get(Calendar.YEAR));
 
         LinearLayout btnLogin = (LinearLayout) view.findViewById(R.id.btn_range_datePicker_2);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDate();
+                MyYearMonthPickerDialog pd = new MyYearMonthPickerDialog();
+                pd.setListener(d);
+                pd.show(getFragmentManager(), "YearMonthPickerTest");
             }
         });
 
@@ -171,20 +173,13 @@ public class RangeActivity2 extends Fragment {
         return view;
     }
 
-    Calendar cal = Calendar.getInstance();
-
-    void showDate() {
-        DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
-
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                TextView tv = getActivity().findViewById(R.id.editBirth_range_2);
-                tv.setText(String.format("%d - %d, %d", month+1, dayOfMonth, year));
-            }
-        },cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
-
-        datePickerDialog.show();
-    }
+    DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth){
+            TextView tv = getActivity().findViewById(R.id.editBirth_range_2);
+            tv.setText(String.format("%d, %d", monthOfYear, year));
+        }
+    };
 
     private void setData(int count, float range) {
 

@@ -166,8 +166,6 @@ public class TemperatureActivity1 extends Fragment {
         return view;
     }
 
-    Calendar cal = Calendar.getInstance();
-
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear, int weekOfMonth){

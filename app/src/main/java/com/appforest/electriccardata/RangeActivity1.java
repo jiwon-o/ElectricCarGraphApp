@@ -90,13 +90,15 @@ public class RangeActivity1 extends Fragment {
         //get today
         TextView tv = view.findViewById(R.id.editBirth_range_1);
         Calendar cal = Calendar.getInstance();
-        tv.setText((cal.get(Calendar.MONTH)+1) +" - "+ cal.get(Calendar.DATE) +", "+ cal.get(Calendar.YEAR));
+        tv.setText("Week " + cal.get(Calendar.WEEK_OF_MONTH) +", "+ (cal.get(Calendar.MONTH)+1));
 
         LinearLayout btnLogin = (LinearLayout) view.findViewById(R.id.btn_range_datePicker_1);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDate();
+                MyMonthWeekPickerDialog pd = new MyMonthWeekPickerDialog();
+                pd.setListener(d);
+                pd.show(getFragmentManager(), "MonthWeekPickerTest");
             }
         });
 
@@ -184,20 +186,13 @@ public class RangeActivity1 extends Fragment {
         return view;
     }
 
-    Calendar cal = Calendar.getInstance();
-
-    void showDate() {
-        DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
-
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                TextView tv = getActivity().findViewById(R.id.editBirth_range_1);
-                tv.setText(String.format("%d - %d, %d", month+1, dayOfMonth, year));
-            }
-        },cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
-
-        datePickerDialog.show();
-    }
+    DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int weekOfMonth){
+            TextView tv = getActivity().findViewById(R.id.editBirth_range_1);
+            tv.setText(String.format("Week %d, %d ", weekOfMonth, monthOfYear));
+        }
+    };
 
     private void setData(int count, float range) {
 
