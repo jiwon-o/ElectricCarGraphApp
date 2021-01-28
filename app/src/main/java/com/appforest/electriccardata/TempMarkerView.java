@@ -29,10 +29,10 @@ public class TempMarkerView extends MarkerView {
 
             CandleEntry ce = (CandleEntry) e;
 
-            tvContent.setText("" + Utils.formatNumber(ce.getHigh(), 0, true) + "°C");
+            tvContent.setText("" + Utils.formatNumber(ce.getHigh(), 0, true) + "℉");
         } else {
 
-            tvContent.setText("" + Utils.formatNumber(e.getY(), 0, true) + "°C");
+            tvContent.setText("" + Utils.formatNumber(e.getY(), 0, true) + "℉");
         }
 
         super.refreshContent(e, highlight);

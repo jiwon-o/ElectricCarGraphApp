@@ -1,6 +1,7 @@
 package com.appforest.electriccardata;
 
 import android.app.DatePickerDialog;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -8,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,13 +87,15 @@ public class TemperatureActivity3 extends Fragment {
         //get today
         TextView tv = view.findViewById(R.id.editBirth_temp_3);
         Calendar cal = Calendar.getInstance();
-        tv.setText((cal.get(Calendar.MONTH)+1) +" - "+ cal.get(Calendar.DATE) +", "+ cal.get(Calendar.YEAR));
+        tv.setText(""+ cal.get(Calendar.YEAR));
 
         LinearLayout btnLogin = (LinearLayout) view.findViewById(R.id.btn_temp_datePicker_3);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDate();
+                MyYearPickerDialog pd = new MyYearPickerDialog();
+                pd.setListener(d);
+                pd.show(getFragmentManager(), "YearPickerTest");
             }
         });
 
@@ -129,9 +133,9 @@ public class TemperatureActivity3 extends Fragment {
         yAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
         yAxis.setTextSize(10);
         yAxis.setTextColor(Color.GRAY);
-        yAxis.setAxisMaximum(50f);
-        yAxis.setAxisMinimum(0f);
-        yAxis.setGranularity(25f);
+        yAxis.setAxisMaximum(122f);
+        yAxis.setAxisMinimum(14f);
+        yAxis.setGranularity(65f);
         yAxis.setDrawGridLines(true);
         yAxis.setDrawAxisLine(false);
         yAxis.setDrawLabels(true);
@@ -149,25 +153,18 @@ public class TemperatureActivity3 extends Fragment {
         chart.setMarker(mv); // Set the marker to the chart
 
         // setting data
-        setData(12, 50);
+        setData(12, 100);
 
         return view;
     }
 
-    Calendar cal = Calendar.getInstance();
-
-    void showDate() {
-        DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
-
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                TextView tv = getActivity().findViewById(R.id.editBirth_temp_3);
-                tv.setText(String.format("%d - %d, %d", month+1, dayOfMonth, year));
-            }
-        },cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
-
-        datePickerDialog.show();
-    }
+    DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth){
+            TextView tv = getActivity().findViewById(R.id.editBirth_temp_3);
+            tv.setText(String.format("%d", year));
+        }
+    };
 
     private void setData(int count, float range) {
 

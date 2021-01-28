@@ -152,16 +152,16 @@ public class RangeActivity2 extends Fragment {
             yAxis.setLabelCount(3, true);
             yAxis.setTextColor(Color.GRAY);
             yAxis.setTextSize(12);
-            yAxis.setAxisMaximum(100f);
+            yAxis.setAxisMaximum(80f);
             yAxis.setAxisMinimum(0f);
-            yAxis.setGranularity(50f);
+            yAxis.setGranularity(40f);
             yAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
             yAxis.setDrawGridLines(true);
             yAxis.setAxisLineColor(Color.WHITE);
             chart.getAxisRight().setEnabled(false);
         }
 
-        setData(31, 100);
+        setData(31, 80);
         chart.getLegend().setEnabled(false);
 
         chart.animateXY(1000, 1000);

@@ -28,9 +28,12 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -89,13 +92,15 @@ public class TemperatureActivity1 extends Fragment {
         //get today
         TextView tv = view.findViewById(R.id.editBirth_temp_1);
         Calendar cal = Calendar.getInstance();
-        tv.setText((cal.get(Calendar.MONTH)+1) +" - "+ cal.get(Calendar.DATE) +", "+ cal.get(Calendar.YEAR));
+        tv.setText("Week " + cal.get(Calendar.WEEK_OF_MONTH) +", "+ (cal.get(Calendar.MONTH)+1));
 
         LinearLayout btnLogin = (LinearLayout) view.findViewById(R.id.btn_temp_datePicker_1);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDate();
+                MyMonthWeekPickerDialog pd = new MyMonthWeekPickerDialog();
+                pd.setListener(d);
+                pd.show(getFragmentManager(), "MonthWeekPickerTest");
             }
         });
 
@@ -136,9 +141,9 @@ public class TemperatureActivity1 extends Fragment {
         yAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
         yAxis.setTextSize(12);
         yAxis.setTextColor(Color.GRAY);
-        yAxis.setAxisMaximum(50f);
-        yAxis.setAxisMinimum(0f);
-        yAxis.setGranularity(25f);
+        yAxis.setAxisMaximum(122f);
+        yAxis.setAxisMinimum(14f);
+        yAxis.setGranularity(65f);
         yAxis.setDrawGridLines(true);
         yAxis.setDrawAxisLine(false);
         yAxis.setDrawLabels(true);
@@ -156,25 +161,20 @@ public class TemperatureActivity1 extends Fragment {
         chart.setMarker(mv); // Set the marker to the chart
 
         // setting data
-        setData(7, 50);
+        setData(7, 100);
 
         return view;
     }
 
     Calendar cal = Calendar.getInstance();
 
-    void showDate() {
-        DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
-
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                TextView tv = getActivity().findViewById(R.id.editBirth_temp_1);
-                tv.setText(String.format("%d - %d, %d", month+1, dayOfMonth, year));
-            }
-        },cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
-
-        datePickerDialog.show();
-    }
+    DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int weekOfMonth){
+            TextView tv = getActivity().findViewById(R.id.editBirth_temp_1);
+            tv.setText(String.format("Week %d, %d ", weekOfMonth, monthOfYear));
+        }
+    };
 
 
     private void setData(int count, float range) {
