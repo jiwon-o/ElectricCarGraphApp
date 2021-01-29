@@ -1,4 +1,4 @@
-package com.appforest.electriccardata;
+package com.appforest.electriccargraphapp;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;

@@ -1,4 +1,4 @@
-package com.appforest.electriccardata;
+package com.appforest.electriccargraphapp;
 
 import android.app.DatePickerDialog;
 import android.graphics.Color;
@@ -24,6 +24,7 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IFillFormatter;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.dataprovider.LineDataProvider;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.Utils;
@@ -33,10 +34,10 @@ import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link RangeFragment2#newInstance} factory method to
+ * Use the {@link RangeFragment3#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RangeFragment2 extends Fragment {
+public class RangeFragment3 extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,7 +50,7 @@ public class RangeFragment2 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public RangeFragment2() {
+    public RangeFragment3() {
         // Required empty public constructor
     }
 
@@ -59,11 +60,11 @@ public class RangeFragment2 extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment RangeActivity2.
+     * @return A new instance of fragment RangeActivity3.
      */
     // TODO: Rename and change types and number of parameters
-    public static RangeFragment2 newInstance(String param1, String param2) {
-        RangeFragment2 fragment = new RangeFragment2();
+    public static RangeFragment3 newInstance(String param1, String param2) {
+        RangeFragment3 fragment = new RangeFragment3();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -84,20 +85,20 @@ public class RangeFragment2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_range2, container, false);
+        View view = inflater.inflate(R.layout.fragment_range3, container, false);
 
         //get today
-        TextView tv = view.findViewById(R.id.editBirth_range_2);
+        TextView tv = view.findViewById(R.id.editBirth_range_3);
         Calendar cal = Calendar.getInstance();
-        tv.setText((cal.get(Calendar.MONTH) + 1) + ", " + cal.get(Calendar.YEAR));
+        tv.setText("" + cal.get(Calendar.YEAR));
 
-        LinearLayout btnLogin = (LinearLayout) view.findViewById(R.id.btn_rangeDatePicker_2);
+        LinearLayout btnLogin = (LinearLayout) view.findViewById(R.id.btn_rangeDatePicker_3);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PickerDialog_YearMonth pd = new PickerDialog_YearMonth();
+                PickerDialog_Year pd = new PickerDialog_Year();
                 pd.setListener(d);
-                pd.show(getFragmentManager(), "YearMonthPickerTest");
+                pd.show(getFragmentManager(), "YearPickerTest");
             }
         });
 
@@ -132,18 +133,36 @@ public class RangeFragment2 extends Fragment {
             chart.setPinchZoom(true);
         }
 
+        final ArrayList<String> xLabel = new ArrayList<>();
+        xLabel.add("JAN");
+        xLabel.add("FEB");
+        xLabel.add("MAR");
+        xLabel.add("APR");
+        xLabel.add("MAY");
+        xLabel.add("JUN");
+        xLabel.add("JUL");
+        xLabel.add("AUG");
+        xLabel.add("SEP");
+        xLabel.add("OCT");
+        xLabel.add("NOV");
+        xLabel.add("DEC");
 
         XAxis xAxis;
         {   // // X-Axis Style // //
             xAxis = chart.getXAxis();
-            xAxis.setLabelCount(31, false);
+            xAxis.setLabelCount(12, true);
             xAxis.setTextColor(Color.GRAY);
-            xAxis.setTextSize(8f);
+            xAxis.setTextSize(10);
             xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
             xAxis.setDrawGridLines(false);
             xAxis.setAxisLineColor(Color.WHITE);
-            xAxis.setAxisMinimum(1f);
             chart.getAxisRight().setEnabled(false);
+            xAxis.setValueFormatter(new IndexAxisValueFormatter() {
+                @Override
+                public String getFormattedValue(float value) {
+                    return xLabel.get((int) value);
+                }
+            });
 
         }
 
@@ -153,16 +172,16 @@ public class RangeFragment2 extends Fragment {
             yAxis.setLabelCount(3, true);
             yAxis.setTextColor(Color.GRAY);
             yAxis.setTextSize(12);
-            yAxis.setAxisMaximum(80f);
+            yAxis.setAxisMaximum(4000f);
             yAxis.setAxisMinimum(0f);
-            yAxis.setGranularity(40f);
+            yAxis.setGranularity(2000f);
             yAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
             yAxis.setDrawGridLines(true);
             yAxis.setAxisLineColor(Color.WHITE);
             chart.getAxisRight().setEnabled(false);
         }
 
-        setData(31, 80);
+        setData(12, 4000);
         chart.getLegend().setEnabled(false);
 
         chart.animateXY(1000, 1000);
@@ -174,9 +193,9 @@ public class RangeFragment2 extends Fragment {
 
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
         @Override
-        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-            TextView tv = getActivity().findViewById(R.id.editBirth_range_2);
-            tv.setText(String.format("%d, %d", monthOfYear, year));
+        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+            TextView tv = getActivity().findViewById(R.id.editBirth_range_3);
+            tv.setText(String.format("%d", year));
         }
     };
 

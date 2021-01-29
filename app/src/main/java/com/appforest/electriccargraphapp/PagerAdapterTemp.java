@@ -1,14 +1,15 @@
-package com.appforest.electriccardata;
+package com.appforest.electriccargraphapp;
+
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-public class PagerAdapterRange extends FragmentStatePagerAdapter {
+public class PagerAdapterTemp extends FragmentStatePagerAdapter {
     int mNumOfTabs;
 
-    public PagerAdapterRange(@NonNull FragmentManager fm, int NumOfTabs) {
+    public PagerAdapterTemp(@NonNull FragmentManager fm, int NumOfTabs) {
         super(fm, NumOfTabs);
         this.mNumOfTabs = NumOfTabs;
     }
@@ -18,11 +19,11 @@ public class PagerAdapterRange extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new RangeFragment1();
+                return new TemperatureFragment1();
             case 1:
-                return new RangeFragment2();
+                return new TemperatureFragment2();
             case 2:
-                return new RangeFragment3();
+                return new TemperatureFragment3();
             default:
                 return null;
         }

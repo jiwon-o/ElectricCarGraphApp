@@ -33,7 +33,7 @@
         android:id="@+id/batteryChart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/piechart_data"
+        android:layout_above="@+id/pieChart_data"
         android:layout_below="@+id/ln_battery"
         android:orientation="vertical">
 
@@ -43,7 +43,7 @@
 
 
     <LinearLayout
-        android:id="@+id/piechart_data"
+        android:id="@+id/pieChart_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

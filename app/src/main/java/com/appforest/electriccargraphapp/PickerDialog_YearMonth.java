@@ -1,4 +1,4 @@
-package com.appforest.electriccardata;
+package com.appforest.electriccargraphapp;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -13,7 +13,7 @@ import androidx.fragment.app.DialogFragment;
 
 import java.util.Calendar;
 
-public class PickerDialog_Year extends DialogFragment {
+public class PickerDialog_YearMonth extends DialogFragment {
 
     private static final int MAX_YEAR = 2099;
     private static final int MIN_YEAR = 1980;
@@ -33,27 +33,32 @@ public class PickerDialog_Year extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
 
-        View dialog = inflater.inflate(R.layout.picker_year, null);
+        View dialog = inflater.inflate(R.layout.picker_month_year, null);
 
         btnConfirm = dialog.findViewById(R.id.btn_confirm);
         btnCancel = dialog.findViewById(R.id.btn_cancel);
 
-        final NumberPicker yearPicker = (NumberPicker) dialog.findViewById(R.id.yearlyPicker_year);
+        final NumberPicker monthPicker = (NumberPicker) dialog.findViewById(R.id.monthlyPicker_month);
+        final NumberPicker yearPicker = (NumberPicker) dialog.findViewById(R.id.monthlyPicker_year);
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PickerDialog_Year.this.getDialog().cancel();
+                PickerDialog_YearMonth.this.getDialog().cancel();
             }
         });
 
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listener.onDateSet(null, yearPicker.getValue(), 0, 0);
-                PickerDialog_Year.this.getDialog().cancel();
+                listener.onDateSet(null, yearPicker.getValue(), monthPicker.getValue(), 0);
+                PickerDialog_YearMonth.this.getDialog().cancel();
             }
         });
+
+        monthPicker.setMinValue(1);
+        monthPicker.setMaxValue(12);
+        monthPicker.setValue(cal.get(Calendar.MONTH) + 1);
 
         int year = cal.get(Calendar.YEAR);
         yearPicker.setMinValue(MIN_YEAR);

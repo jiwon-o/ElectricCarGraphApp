@@ -1,4 +1,4 @@
-package com.appforest.electriccardata;
+package com.appforest.electriccargraphapp;
 
 import org.junit.Test;
 

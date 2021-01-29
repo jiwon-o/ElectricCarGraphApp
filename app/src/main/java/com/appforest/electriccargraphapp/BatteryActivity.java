@@ -1,4 +1,4 @@
-package com.appforest.electriccardata;
+package com.appforest.electriccargraphapp;
 
 import android.graphics.Color;
 import android.os.Bundle;
