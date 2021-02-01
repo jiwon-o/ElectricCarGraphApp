@@ -20,7 +20,7 @@ import com.github.mikephil.charting.formatter.PercentFormatter;
 
 import java.util.ArrayList;
 
-public class BatteryActivity extends Fragment {
+public class BatteryFragment extends Fragment {
 
 
     //Battery fragment

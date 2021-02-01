@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
                 fragment = new RangeActivity();
             } else {
-                fragment = new BatteryActivity();
+                fragment = new BatteryFragment();
             }
             fragmentTransaction.add(R.id.content_layout, fragment, tag);
         } else {
