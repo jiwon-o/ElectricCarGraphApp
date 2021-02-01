@@ -43,8 +43,6 @@ public class RangeFragment2 extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    private LineChart chart;
-
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -62,7 +60,7 @@ public class RangeFragment2 extends Fragment {
      * @return A new instance of fragment RangeActivity2.
      */
     // TODO: Rename and change types and number of parameters
-    public static RangeFragment2 newInstance(String param1, String param2) {
+    public static RangeFragment2 newInstance(String param1, String param2) {        //Monthly range fragment
         RangeFragment2 fragment = new RangeFragment2();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
@@ -79,6 +77,8 @@ public class RangeFragment2 extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+
+    private LineChart chart;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -101,6 +101,7 @@ public class RangeFragment2 extends Fragment {
             }
         });
 
+        // // Line chart style // //
         {   // // Chart Style // //
             chart = view.findViewById(R.id.chart_line);
 
@@ -113,8 +114,6 @@ public class RangeFragment2 extends Fragment {
             // enable touch gestures
             chart.setTouchEnabled(true);
 
-            // set listeners
-//            chart.setOnChartValueSelectedListener(this);
             chart.setDrawGridBackground(false);
 
             // create marker to display box when values are selected
@@ -172,6 +171,7 @@ public class RangeFragment2 extends Fragment {
         return view;
     }
 
+    // // When you click on a date in the calendar
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -180,6 +180,7 @@ public class RangeFragment2 extends Fragment {
         }
     };
 
+    // // Set data of line chart
     private void setData(int count, float range) {
 
         ArrayList<Entry> values = new ArrayList<>();

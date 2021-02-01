@@ -2,8 +2,6 @@
     <!-- Base application theme. -->
     <style name="Theme.ElectricCarData" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
-
-
         <item name="colorPrimary">#F47575</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
@@ -20,5 +18,4 @@
         <item name="colorAccent">@android:color/black</item>
 
     </style>
-
 </resources>

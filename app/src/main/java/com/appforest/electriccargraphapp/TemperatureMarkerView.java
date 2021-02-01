@@ -10,6 +10,7 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.utils.MPPointF;
 import com.github.mikephil.charting.utils.Utils;
 
+//Marker view of temperature fragment
 public class TemperatureMarkerView extends MarkerView {
 
     private TextView tvContent;

@@ -87,11 +87,6 @@ public class BatteryActivity extends Fragment {
 
         // NOTE: The order of the entries when being added to the entries array determines their position around the center of
         // the chart.
-
-//        for (int i = 0; i < count ; i++) {
-//            entries.add(new PieEntry((float) ((Math.random() * range) + range / 5)));
-//        }
-
         entries.add(new PieEntry((float) ((Math.random() * range) + range / 5), "Driving Meter"));
         entries.add(new PieEntry((float) ((Math.random() * range) + range / 5), "Air Condition"));
         entries.add(new PieEntry((float) ((Math.random() * range) + range / 5), "Battery Field"));

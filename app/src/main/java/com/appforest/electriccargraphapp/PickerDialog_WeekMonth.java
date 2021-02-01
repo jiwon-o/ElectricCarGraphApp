@@ -41,14 +41,14 @@ public class PickerDialog_WeekMonth extends DialogFragment {
         final NumberPicker monthPicker = (NumberPicker) dialog.findViewById(R.id.weeklyPicker_month);
         final NumberPicker weekPicker = (NumberPicker) dialog.findViewById(R.id.weeklyPicker_week);
 
-        btnCancel.setOnClickListener(new View.OnClickListener(){
+        btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 PickerDialog_WeekMonth.this.getDialog().cancel();
             }
         });
 
-        btnConfirm.setOnClickListener(new View.OnClickListener(){
+        btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 listener.onDateSet(null, 0, monthPicker.getValue(), weekPicker.getValue());

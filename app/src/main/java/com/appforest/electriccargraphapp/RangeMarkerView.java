@@ -10,6 +10,7 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.utils.MPPointF;
 import com.github.mikephil.charting.utils.Utils;
 
+//Marker view of range fragment
 public class RangeMarkerView extends MarkerView {
 
     private TextView tvContent;

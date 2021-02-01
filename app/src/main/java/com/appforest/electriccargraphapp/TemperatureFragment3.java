@@ -39,8 +39,6 @@ public class TemperatureFragment3 extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    private BarChart chart;
-
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -58,7 +56,7 @@ public class TemperatureFragment3 extends Fragment {
      * @return A new instance of fragment TemperatureActivity3.
      */
     // TODO: Rename and change types and number of parameters
-    public static TemperatureFragment3 newInstance(String param1, String param2) {
+    public static TemperatureFragment3 newInstance(String param1, String param2) {      //Yearly temperature fragment
         TemperatureFragment3 fragment = new TemperatureFragment3();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
@@ -75,6 +73,8 @@ public class TemperatureFragment3 extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+
+    private BarChart chart;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -97,6 +97,7 @@ public class TemperatureFragment3 extends Fragment {
             }
         });
 
+        // // Bar chart style // //
         chart = view.findViewById(R.id.chart_bar);
 
         chart.setDrawBarShadow(false);
@@ -116,6 +117,7 @@ public class TemperatureFragment3 extends Fragment {
 
         chart.animateXY(2000, 2000);
 
+        // // X-Axis Style // //
         XAxis xAxis = chart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawGridLines(false);
@@ -126,6 +128,7 @@ public class TemperatureFragment3 extends Fragment {
 
         chart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(xAxisLables));
 
+        // // Y-Axis Style // //
         YAxis yAxis = chart.getAxisLeft();
         yAxis.setLabelCount(3, true);
         yAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
@@ -156,6 +159,7 @@ public class TemperatureFragment3 extends Fragment {
         return view;
     }
 
+    // // When you click on a date in the calendar
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -164,6 +168,7 @@ public class TemperatureFragment3 extends Fragment {
         }
     };
 
+    // // Set data of bar chart
     private void setData(int count, float range) {
 
         float start = 1f;
