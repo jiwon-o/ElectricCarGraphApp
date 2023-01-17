@@ -1,3 +1,9 @@
+![데이터통계](https://user-images.githubusercontent.com/64193469/212933594-9c6fc6f0-c492-4a24-b7e7-d152551b9850.png)
+![데이터통계2](https://user-images.githubusercontent.com/64193469/212933606-7f7d202a-2345-4e6b-8243-94bf722bed34.png)
+![데이터통계3](https://user-images.githubusercontent.com/64193469/212933617-50cb8da7-327e-4508-9808-0c2fbb4ab041.png)
+![데이터통계4](https://user-images.githubusercontent.com/64193469/212933639-f6d7a949-12bb-4f0f-9377-fa66821277fa.png)
+
+
 Author: AppForest.kr
 Date: February, 2021
 Description: Graph data
